@@ -1,2 +1,100 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">  
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="vtuber_communities_index">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>VTuber一覧</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @vtuber_informations.each do |vtuber_information| %>
+            <tr>
+              <td>
+                <%= link_to vtuber_community_path(vtuber_information_id: vtuber_information.id), method: :get do %>
+                  <% if vtuber_information.image.attached? %>
+                    <%= image_tag vtuber_information.image, size: "55x43" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "55x43" %>
+                  <% end %>
+                  <%= vtuber_information.vtuber_name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <h2 class="toppage-head">最新ニュース</h2>
+      <div class='news-new'>
+        <%= form_with model: @new_news, url: admin_news_index_path, local: true do |f| %>
+          <%= render "shared/error_messages", resource: resource %>
+          <%# ニュース画像 %>
+          <%= f.label :"ニュース画像", class: 'news-new__image-label' %>
+          <%= f.file_field :image, accept: "image/*", class: 'news-new__image-field' %>
+          <br>
+          <%# ニュースタイトル %>
+          <%= f.label :news_name, 'ニュースタイトル', class: 'news-new__name-label' %><br>
+          <%= f.text_field :news_name, placeholder: "ニュースタイトルを記入", class: 'news-new__name-field' %>
+          <br>
+          <%# ニュース内容 %>
+          <%= f.label :news_introduction, 'ニュース内容', class: 'news-new__text-label' %><br>
+          <%= f.text_area :news_introduction, placeholder: "ニュース内容を記入", class: 'news-new__text-field' %>
+          <%# 投稿ボタン %>
+          <div class='tweet-new__button-box'>
+            <%= f.submit "投稿する", class: 'button__black tweet-new__button' %>
+          </div>
+        <% end %>
+      </div>
+      <% @news.each do |news| %>
+      <%# タイムライン記事 %>
+        <div class='news__box'>
+          <%# ヘッダーブロック : 投稿日時 ------------------------------------ %>
+          <div class='news__header news__table'>
+            <small><%= news.created_at_ja %></small>
+          </div>
+          <%# メインブロック : プレビュー、ページ情報 etc ------------------------------- %>
+          <div class='news__main'>
+            <%# ニュース画像 %>
+            <div class='news__preview-box'>
+              <object>
+                <div class='news__preview-background'>
+                  <% if news.image.attached? %>
+                    <%= image_tag news.image, size: "180x130" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "180x130" %>
+                  <% end %>
+                </div>
+              </object>
+            </div>
+            <%# ニュースタイトル、ニュース紹介文 %>
+            <div class='news__information'>
+              <%# ニュースタイトル %>
+              <div class='news__news-title'><%= news.news_name %></div>
+              <%# ニュース紹介文 %>
+              <div class='news__news-text'><%= news.news_introduction %></div>
+            </div>
+          </div>
+        </div>
+        <%# 削除 %>
+        <div class='news__footer-box'>
+          <object>
+            <%= link_to admin_root_path(news.id), method: :delete, class: 'news__link-show', id: 'admin_news_path', data: {confirm: "本当に削除しますか？"} do %>
+              <div>
+                <i class="far fa-trash-alt"></i>
+              </div>
+              <div>
+                <small class='news__footer-text'>削除</small>
+              </div>
+            <% end %>
+          </object>
+        </div>
+      <% end %>
+    </div>
+		<div class="text-center"><%= paginate(@news) %></div>
+    </div>
+  </div>
+</div>

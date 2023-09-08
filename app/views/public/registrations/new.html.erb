@@ -1,3 +1,4 @@
+<div class="container"> 
 <div class="row">
   <div class="col-xs-offset-1 col-xs-11">
     <h2 class="head-line title_h2 text-left">新規会員登録</h2>
@@ -18,7 +19,6 @@
       <div class="field form-group col-xs-9">
         <%= f.label :"パスワード(6文字以上)", class: "col-sm-4 control-label" %>
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)
         <% end %>
         <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
       </div>
@@ -39,4 +39,5 @@
       <p class="new-link"><%= render "public/shared/links" %>からログインしてください。</p>
     </div>
   </div>
+</div>
 </div>

@@ -1,0 +1,9 @@
+<% if vtuber_community.liked_by?(current_customer)%>
+  <%= link_to vtuber_community_like_vtuber_communities_path(vtuber_community.id),method: :delete,remote: true do %>
+    <i class="fa-solid fa-heart" style="color: #f60909;"></i>
+  <% end %>
+<% else %>
+  <%= link_to vtuber_community_like_vtuber_communities_path(vtuber_community.id),method: :post,remote: true do %>
+    <i class="fa-regular fa-heart" style="color: #f60909;"></i>
+  <% end %>
+<% end %>

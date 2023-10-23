@@ -1,2 +1,80 @@
-<h1>Admin::VtuberInformations#show</h1>
-<p>Find me in app/views/admin/vtuber_informations/show.html.erb</p>
+<div class="container">
+<h2 class="toppage-head"><%= @vtuber_information.vtuber_name %>詳細</h2>
+<div class="row my-3">
+  <div class="col-sm-8 col-md-8 col-lg-5 offset-sm-2 offset-md-2 offset-lg-1 py-5">
+    <div class="mb-5 py-5">
+      <% if @vtuber_information.image.attached? %>
+        <%= image_tag @vtuber_information.image, size: "450x450" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "450x450" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-10 col-md-8 col-lg-5 offset-sm-1 offset-md-2 offset-lg-0 py-5 pt-5">
+    <%= link_to admin_vtuber_informations_path do %>
+      <button>戻る</button>
+    <% end %>
+    <%= link_to edit_admin_vtuber_information_path(@vtuber_information) do %>
+      <button><i class="fa-solid fa-user-pen"></i></button>
+    <% end %>
+    <%= link_to admin_vtuber_information_path, method: :delete, class: 'timeline__link-show', data: {confirm: "本当に削除しますか？"} do %>
+      <button>
+        <i class="far fa-trash-alt"></i>
+        <small class='timeline__text'>削除</small>
+      </button>
+    <% end %>
+    <div class="row my-5">
+      <div class="col-12">
+        <table class="table">
+          <tr>
+            <td style="width: 30%" >名前</td>
+            <td style="width: 70%"><%= @vtuber_information.vtuber_name %></td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td style="width: 30%">YouTube</td>
+            <td style="width: 70%"><%= @vtuber_information.youtube_name %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">Twitter</td>
+            <td style="width: 70%"><%= @vtuber_information.twitter_name %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">ハッシュタグ</td>
+            <td style="width: 70%"><%= @vtuber_information.tag_name %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">ファンネーム</td>
+            <td style="width: 70%"><%= @vtuber_information.fan_name %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">推しマーク</td>
+            <td style="width: 70%"><%= @vtuber_information.mark %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">公式カラー</td>
+            <td style="width: 70%"><%= @vtuber_information.color %></td>
+          </tr>
+          <tr>
+             <td style="width: 30%">身長</td>
+            <td style="width: 70%"><%= @vtuber_information.height %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">血液型</td>
+            <td style="width: 70%"><%= @vtuber_information.blood_type %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">誕生日</td>
+            <td style="width: 70%"><%= @vtuber_information.birthday.strftime('%m/%d') %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">初配信日</td>
+            <td style="width: 70%"><%= @vtuber_information.first_delivery.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

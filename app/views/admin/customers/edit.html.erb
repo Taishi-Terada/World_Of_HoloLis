@@ -1,2 +1,41 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class='col-12 col-md-8 mx-auto py-5'>
+      <h1>会員情報編集</h1>
+      <div class='card mb-3'>
+        <div class='card-body'>
+          <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f| %>
+            <div class="form-group my-5">
+              <% if @customer.image.attached? %>
+                <%= image_tag @customer.image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <% end %>
+              <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
+            </div>
+            <div class="form-group my-5">
+              <%= f.label :name, "ユーザー名" %><br/>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group my-5">
+              <%= f.label :introduction, "自己紹介" %><br/>
+              <%= f.text_area :introduction, class: 'form-control' %>
+            </div>
+            <div class="form-group my-5">
+              <%= f.label :email, "メールアドレス" %><br/>
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+            <div class="form-group my-5">
+              <%= f.label :is_deleted, "会員ステータス", class: 'admin-edit__label' %>
+              <%= f.radio_button :is_deleted, false %>
+        　     <%= f.label :is_deleted, "有効", {value: :true, style: "display: inline-block;"} %>
+        　     <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "退会", {value: :false, style: "display: inline-block;"} %>
+            </div>
+            <%= f.submit "変更保存", class: 'btn btn-success btn-block w-75 mx-auto' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

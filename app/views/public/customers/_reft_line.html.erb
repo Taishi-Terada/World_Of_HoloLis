@@ -1,0 +1,62 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <object>
+      <div>
+        <% if customer.image.attached? %>
+          <%= image_tag customer.image, size: "55x55" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "55x55" %>
+        <% end %>
+        <span class='mx-1'><%= customer.name %></span>
+        <span class='mx-1'>
+          <% if customer != current_customer %>
+            <% if current_customer.following?(customer) %>
+              <%= link_to "フォロー解除", customer_relationships_path(customer_id: customer.id), method: :delete, class: "btn-create btn-sm" %>
+            <% else %>
+              <%= link_to "フォロー", customer_relationships_path(customer_id: customer.id), method: :post, class: "btn-create btn-sm" %>
+            <% end %>
+          <% end %>
+        </span>
+      </div>
+    </object>
+    <p class="card-text ml-5 my-3"><%= customer.introduction %></p>
+    <div class="row mb-4">
+      <div class="col-md-4">フォロー数</div>
+      <div class="col-md-1"><%= link_to customer.followings.count, customer_followings_path(customer_id: customer.id) %></div>
+      <div class="col-md-5">フォロワー数</div>
+      <div class="col-md-1"><%= link_to customer.followers.count, customer_followers_path(customer_id: customer.id) %></div>
+    </div>
+    <div>
+      <% if customer == current_customer %>
+        <%= link_to edit_customer_path(customer), class:"btn btn-secondary btn-block w-100" do %>
+          <i class="fas fa-user-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>マイ推し</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% like_vtuber_communities.each do |like_vtuber_community| %>
+        <tr>
+          <td>
+            <%= link_to vtuber_community_path(like_vtuber_community.vtuber_community_id), method: :get do %>
+              <% if like_vtuber_community.vtuber_community.vtuber_information.image.attached? %>
+                <%= image_tag like_vtuber_community.vtuber_community.vtuber_information.image, size: "55x55" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "55x55" %>
+              <% end %>
+              <%= like_vtuber_community.vtuber_community.vtuber_information.vtuber_name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

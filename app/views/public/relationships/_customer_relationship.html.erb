@@ -1,0 +1,28 @@
+<% if customers.exists? %>
+  <table class="table table-hover">
+    <tbody>
+      <% customers.each do |customer| %>
+        <tr>
+          <td></td>
+          <td>
+            <% if customer.image.attached? %>
+             <%= image_tag customer.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= customer.name %></td>
+          <td>フォロー数:<%= customer.followings.count%></td>
+          <td>フォロワー数:<%= customer.followers.count%></td>
+          <td><%= link_to"user詳細",user_path(customer) %></td>
+        </tr>
+      <% end %>  
+    </tbody>
+  </table>
+<% else %>
+  <div class="row">
+    <div class="col-12 offset-1">
+      ユーザーはいません
+    </div>  
+  </div>  
+<% end %>

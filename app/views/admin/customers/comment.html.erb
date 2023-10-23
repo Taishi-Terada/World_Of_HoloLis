@@ -1,2 +1,85 @@
-<h1>Admin::Customers#comment</h1>
-<p>Find me in app/views/admin/customers/comment.html.erb</p>
+<div class="container"> 
+  <div class="row">
+    <div class="col-4">
+      <%= render 'admin/customers/reft_line', customer: @customer, like_vtuber_communities: @like_vtuber_communities %>
+    </div>
+    <div class="col-8">
+      <div>
+        <label><%= link_to "投稿一覧", admin_customer_path, class:"btn btn-info" %></label>
+        <label><%= link_to "コメント一覧", comment_admin_customers_path, class:"btn btn-info" %></label>
+      </div>
+      <h2 class="my-2">コメント一覧</h2>
+      <div class='home__main'>
+        <% @post_comments.each do |post_comment| %>
+          <div class="card mb-3 w-75 mx-auto">
+            <div class="card-header bg-transparent">
+              <object>
+                <div>
+                  <%= link_to admin_customer_path(post_comment.post.customer_id), method: :get do %>
+                    <% if post_comment.post.customer.image.attached? %>
+                      <%= image_tag post_comment.post.customer.image, size: "55x55" %>
+                    <% else %>
+                      <%= image_tag 'no_image', size: "55x55" %>
+                    <% end %>
+                    <span class='mx-1'><%= post_comment.post.customer.name %></span>
+                  <% end %>
+                  <small class='mx-1'><%= post_comment.post.created_at.strftime('%Y/%m/%d') %></small>
+                </div>
+              </object>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%= post_comment.post.introduction %></p>
+              <p class="card-text"><%= post_comment.post.category %></p>
+              <div class="card-image">
+                <% if post_comment.post.image.attached? %>
+                  <% post_comment.post.image.each do |image| %>
+                    <%= image_tag image.variant(resize: '150x150') %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent form-inline">
+              <object>
+                <div class="mr-3">
+                  <%= link_to admin_post_path(post_comment.post.id), class: 'postline__link-show' do %>
+                    <i class="far fa-comment"></i>
+                    <% if post_comment.post.post_comments.count != 0 %>
+                      <%= post_comment.post.post_comments.count %>
+                    <% end %>
+                    <small class='postline__footer-text'>コメント</small>
+                  <% end %>
+                </div>
+              </object>
+              <div>
+                ♡<%= post_comment.post.post_bookmarks.count %>いいね
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <object>
+                  <div class='postline__user'>
+                    <% if post_comment.customer.image.attached? %>
+                      <%= image_tag post_comment.customer.image, size: "55x55" %>
+                    <% else %>
+                      <%= image_tag 'no_image', size: "55x55" %>
+                    <% end %>
+                    <span class='mx-1'><%= post_comment.customer.name %></span>
+                    <small class='mx-1'><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
+                    <%= link_to admin_post_comment_path(post_comment.id), method: :delete, class: 'timeline__link-show', data: {confirm: "本当に削除しますか？"} do %>
+                      <i class="far fa-trash-alt"></i>
+                      <small class='timeline__text'>削除</small>
+                    <% end %>
+                  </div>
+                </object>
+                <div class='ml-5 my-3'>
+                  <%= post_comment.comment %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <div class="text-center"><%= paginate(@post_comments) %></div>
+      </div>
+    </div>
+  </div>
+</div>

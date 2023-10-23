@@ -1,0 +1,29 @@
+<% @post.post_comments.each do |post_comment| %>
+  <div class="card mb-3 w-75 mx-auto">
+    <div class="card-header bg-transparent">
+      <object>
+        <div>
+          <%= link_to user_path(post_comment.customer_id), method: :get do %>
+            <% if post_comment.customer.image.attached? %>
+              <%= image_tag post_comment.customer.image, size: "55x55" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "55x55" %>
+            <% end %>
+            <span class='mx-1'><%= post_comment.customer.name %></span>
+          <% end %>
+          <small class='mx-1'><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
+          <small class='mx-3'>
+            <% if current_customer.id == post_comment.customer_id %>
+              <%= link_to post_post_comment_path(@post.id, post_comment.id), method: :delete, class: 'comment__delete', remote: true do %>
+                削除
+              <% end %>
+            <% end %>
+          </small>
+        </div>
+      </object>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= post_comment.comment %></p>
+    </div>
+  </div>
+<% end %>

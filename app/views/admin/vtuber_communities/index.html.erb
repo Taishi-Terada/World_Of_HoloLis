@@ -1,2 +1,16 @@
-<h1>Admin::VtuberCommunities#index</h1>
-<p>Find me in app/views/admin/vtuber_communities/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <h2 class="col-lg-8">すべてのコミュニティ</h2>
+        <%= render 'admin/vtuber_communities/search_button' %>
+      </div>
+      <div class='post_line'>
+        <%= render 'admin/posts/post_line', posts: @posts %>
+      </div>
+    </div>
+  </div>
+</div>

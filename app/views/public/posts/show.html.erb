@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-3 w-75 mx-auto">
+        <div class="card-header bg-transparent">
+          <object>
+            <div>
+              <%= link_to user_path(@post.customer_id), method: :get do %>
+                <% if @post.customer.image.attached? %>
+                  <%= image_tag @post.customer.image, size: "55x55" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "55x55" %>
+                <% end %>
+                <span class='mx-1'><%= @post.customer.name %></span>
+              <% end %>
+              <small class='mx-1'><%= @post.created_at.strftime('%Y/%m/%d') %></small>
+            </div>
+          </object>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= @post.introduction %></p>
+          <p class="card-text"><%= @post.category %></p>
+          <div class="card-image">
+            <% if @post.image.attached? %>
+              <% @post.image.each do |image| %>
+                <%= image_tag image.variant(resize: '150x150') %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent form-inline">
+          <object>
+            <div class="mr-3">
+              <i class="far fa-comment"></i>
+              <% if @post.post_comments.count != 0 %>
+                <%= @post.post_comments.count %>
+              <% end %>
+              <small class='postline__footer-text'>コメント</small>
+            </div>
+          </object>
+          <div id='post_bookmark_buttons_<%= @post.id %>' class='postline__footer-box'>
+            <%= render "public/post_bookmarks/post_bookmark", post: @post %>
+          </div>
+        </div>
+      </div>
+      <span id="comment_js">
+        <%= render 'public/post_comments/post_comment', post: @post %>
+      </span>
+      <div class= 'comment__new-box' >
+        <div class='card mb-3 w-75 mx-auto'>
+          <div class='card-body'>
+            <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
+              <div class="form-group my-3">
+                <%= f.text_area :comment, placeholder: 'コメントを記入', class:"form-control w-100 input-introduction", required: true %>
+              </div>
+              <%= f.submit 'コメントする', class:"btn btn-success btn-block w-100"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class='card mb-3 w-75 mx-auto'>
+  <div class='card-header bg-transparent'>
+    <object>
+      <div class='mx-1'>
+        <% if current_customer.image.attached? %>
+          <%= image_tag current_customer.image, size: "55x55" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "55x55" %>
+        <% end %>
+        <span class='mx-1'><%= current_customer.name %></span>
+      </div>
+    </object>
+  </div>
+  <div class='card-body'>
+    <%= form_with model: post, url: posts_path do |f| %>
+      <div class="form-group my-3">
+        <%= f.text_area :introduction, placeholder: "いまどうしている？", class:"form-control w-100 input-introduction" %>
+      </div>
+      <div class="form-group my-3">
+        <%= f.text_field :category, placeholder: "ハッシュタグ", class:"form-control w-100 input-introduction" %>
+      </div>
+      <div class="form-inline">
+        <%= f.collection_select :vtuber_community_id, VtuberInformation.all, :id, :vtuber_name, {include_blank: "選択して下さい"}, class:"form-control w-50 input-introduction" %>
+        <label><i class="fa-solid fa-camera mx-3"></i> 画像を添付(最大2枚)
+          <%= f.file_field :image, accept: "image/*", multiple: true, class: 'news-new__image-field d-none' %>
+        </label>
+      </div>
+      <%= f.submit "投稿する", class:"btn btn-success btn-block w-100"%>
+    <% end %>
+  </div>
+</div>

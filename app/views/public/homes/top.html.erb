@@ -1,67 +1,33 @@
-<div class="container">  
+<div class="container">
   <div class="row">
-    <div class="col-xs-3">
-      <div class="vtuber_communities_index">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>VTuber一覧</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @vtuber_informations.each do |vtuber_information| %>
-            <tr>
-              <td>
-                <%= link_to vtuber_community_path(vtuber_information_id: vtuber_information.id), method: :get do %>
-                  <% if vtuber_information.image.attached? %>
-                    <%= image_tag vtuber_information.image, size: "55x43" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "55x43" %>
-                  <% end %>
-                  <%= vtuber_information.vtuber_name %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
+    <div class="col-md-3">
+      <%= render 'public/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-md-9">
       <h2 class="toppage-head">最新ニュース</h2>
-      <% @news.each do |news| %>
-      <%# タイムライン記事 %>
-        <div class='new__box'>
-          <%# ヘッダーブロック : 投稿日時 ------------------------------------ %>
-          <div class='timeline__header timeline__table'>
-            <small><%= news.created_at_ja %></small>
-          </div>
-          <%# メインブロック : プレビュー、ページ情報 etc ------------------------------- %>
-          <div class='timeline__main'>
-            <%# プレビュー %>
-            <div class='timeline__preview-box'>
-              <object>
-                <div class='timeline__preview-background'>
-                  <% if news.image.attached? %>
-                    <%= image_tag news.image, size: "180x130" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "180x130" %>
-                  <% end %>
+      <div class='home__main'>
+        <% @news.each do |news| %>
+          <div class="card mb-3 w-75 mx-auto">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <% if news.image.attached? %>
+                  <%= image_tag news.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= news.news_name %></h5>
+                  <p class="card-text"><%= news.news_introduction %></p>
+                  <p class="card-text"><small class="text-muted"><%= news.created_at.strftime('%Y/%m/%d') %></small></p>
                 </div>
-              </object>
-            </div>
-            <%# ページタイトル、紹介文、タグ %>
-            <div class='timeline__information'>
-              <%# ページタイトル %>
-              <div class='timeline__news-title'><%= news.news_name %></div>
-              <%# 紹介文 %>
-              <div class='timeline__news-text'><%= news.news_introduction %></div>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-		<div class="text-center"><%= paginate(@news) %></div>
+        <% end %>
+      </div>
+      <div class="text-center"><%= paginate(@news) %></div>
     </div>
   </div>
 </div>

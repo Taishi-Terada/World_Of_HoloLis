@@ -15,7 +15,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       t.datetime :remember_updated_at
       t.string :name, null: false
-      t.text :introduction, null: false
+      t.text :introduction
       t.boolean :is_deleted, null: false, default: false
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

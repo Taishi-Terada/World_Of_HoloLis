@@ -1,0 +1,25 @@
+<div class="vtuber_communities_index">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>VTuber一覧</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% vtuber_communities.each do |vtuber_community| %>
+        <tr>
+          <td>
+            <%= link_to admin_vtuber_community_path(vtuber_community.id), method: :get do %>
+              <% if vtuber_community.vtuber_information.image.attached? %>
+                <%= image_tag vtuber_community.vtuber_information.image, size: "55x55" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "55x55" %>
+              <% end %>
+              <%= vtuber_community.vtuber_information.vtuber_name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

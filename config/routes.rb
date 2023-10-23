@@ -1,17 +1,27 @@
 Rails.application.routes.draw do
     root to: 'public/homes#top'
     get "/about" => "public/homes#about", as: "about"
-    
+
   scope module: :public do
-    get 'customers/my_page' => 'customers#show'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
+    get 'customer/:id' => 'customers#show', as: "user"
   	get 'customers/quit' => 'customers#quit'
   	patch 'customers/out' => 'customers#out'
-  	  
-  	resources :posts,only: [:create, :destroy]
-    resources :post_comments,only: [:index, :create, :destroy] 
-    resources :post_bookmarks,only: [:index, :create, :destroy]
+
+    resources :customers, only: [:edit, :update] do
+      member do
+        get :post_bookmarks
+        get :post_comments
+      end
+
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
+
+  	resources :posts,only: [:show, :create, :destroy] do
+  	  resource :post_bookmarks,only: [:create, :destroy]
+  	  resources :post_comments,only: [:create, :destroy]
+  	end
     resources :vtuber_informations, only:[:index, :show] do
       collection do
         get :search
@@ -20,11 +30,12 @@ Rails.application.routes.draw do
     resources :vtuber_communities, only:[:index, :show] do
       collection do
         get :search
+        get :tagsearch
       end
+      resource :like_vtuber_communities,only: [:create, :destroy]
     end
-    resources :like_vtuber_communities,only: [:create, :destroy]
   end
-  
+
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only:[:index, :show, :edit, :update] do
@@ -32,8 +43,8 @@ Rails.application.routes.draw do
         get ':id/comment' => "customers#comment", as: "comment"
       end
     end
-    resources :posts, only:[:destroy]
-    resources :post_comments, only:[:destroy]
+    resources :posts, only:[:show, :destroy]
+    resources :post_comments, only:[:index, :destroy]
     resources :vtuber_informations, only:[:new, :index, :show, :create, :edit, :destroy, :update]
     resources :news, only:[:create, :destroy]
     resources :vtuber_communities, only:[:index, :show] do
@@ -42,7 +53,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }

@@ -11,33 +11,29 @@
           <%= f.text_field :name, autofocus: true, class: "col-sm-4 form-control-static name" %>
         </div>
   
-      <div class="form-group my-5">
-        <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>
-      </div>
+        <div class="form-group my-5">
+          <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-4 form-control-static" %>
+        </div>
 
-      <div class="form-group my-5">
-        <%= f.label :"パスワード(6文字以上)", class: "col-sm-4 control-label" %>
-        <% if @minimum_password_length %>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
-      </div>
+        <div class="form-group my-5">
+          <%= f.label :"パスワード(6文字以上)", class: "col-sm-4 control-label" %>
+          <% if @minimum_password_length %>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+        </div>
 
-      <div class="form-group my-5">
-        <%= f.label :"パスワード(確認用)", class: "col-sm-4 control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
-      </div>
+        <div class="form-group my-5">
+          <%= f.label :"パスワード(確認用)", class: "col-sm-4 control-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+        </div>
 
-      <div class="form-group my-5">
-        <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-sm-4' %>
-      </div>
+        <div class="form-group my-5">
+          <%= f.submit "新規登録",class: 'btn btn-success btn-block mx-auto w-50' %>
+        </div>
       
-    <% end %>
+      <% end %>
     
-    <div class="col-xs-9">
-      <h2 class="head-line title_h2 text-left">既に登録済みの方</h2>
-      <p class="new-link"><%= render "public/shared/links" %>からログインしてください。</p>
     </div>
   </div>
-</div>
 </div>

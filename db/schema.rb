@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_05_155650) do
+ActiveRecord::Schema.define(version: 2023_10_08_164731) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_09_05_155650) do
     t.datetime "remember_created_at"
     t.datetime "remember_updated_at"
     t.string "name", null: false
-    t.text "introduction", null: false
+    t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(version: 2023_09_05_155650) do
     t.integer "customer_id", null: false
     t.integer "vtuber_community_id", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

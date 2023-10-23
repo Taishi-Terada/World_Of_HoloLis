@@ -1,6 +1,10 @@
 # World of VTuber
 ​
 ## サイト概要
+
+VTuberファンが情報を共有し合うコミュニティサイトです。
+みんなの投稿を閲覧したり、自分で投稿したり、推しを語り合ったりできます。
+
 ### サイトテーマ
 
 女性VTuberグループ好きが集う、同じファンの人と交友関係を広げられたり、自分が発信したい情報を気軽に発信・拡散することができたり、他者からの情報収集ができるコミュニティサイト
@@ -22,6 +26,8 @@ SNSには検索を絞り込む機能があるので、それを利用すれば�
 - 同じファンの人達と楽しく会話する時
 ​
 ## 設計書
+- ER図 ![World of VTuber_er_answersheet](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/3c02309a-7e98-4a62-a3cf-6871829e80a0)
+- アプリケーション詳細設計書 
 - 実装機能リスト
 https://docs.google.com/spreadsheets/d/14FXwpv4sODMFvsMfrlYpJDpKi1qdVDJM-QKgia2GZ6M/edit?usp=sharing
 ​
@@ -33,7 +39,7 @@ https://docs.google.com/spreadsheets/d/14FXwpv4sODMFvsMfrlYpJDpKi1qdVDJM-QKgia2G
 - IDE：Cloud9
 ​
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 
 - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
 - 使用しない場合は、使用素材の項目をREADMEから削除してください。
 折りたたむ

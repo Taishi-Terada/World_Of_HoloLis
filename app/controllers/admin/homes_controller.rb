@@ -1,7 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
-    @vtuber_informations = VtuberInformation.all
+    @vtuber_communities = VtuberCommunity.all
     @new_news = News.new
-    @news = News.all.page(params[:page]).per(8)
+    @news = News.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 end

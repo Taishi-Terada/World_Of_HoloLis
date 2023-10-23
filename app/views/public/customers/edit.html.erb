@@ -1,2 +1,62 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="vtuber_communities_index">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>マイ推し</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @vtuber_communities.each do |vtuber_community| %>
+            <tr>
+              <td>
+                <% if vtuber_community.vtuber_information.image.attached? %>
+                  <%= image_tag vtuber_community.vtuber_information.image, size: "55x55" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "55x55" %>
+                <% end %>
+                <%= vtuber_community.vtuber_information.vtuber_name %>
+              </td>
+              <td id='like_vtuber_community_buttons_<%= vtuber_community.id %>'>
+                <%= render "public/like_vtuber_communities/like_vtuber_community", vtuber_community: vtuber_community %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class='col-8'>
+      <i class="fas fa-user-edit"> User情報編集フォーム</i>
+      <span id="profile_close_js"><i class="fas fa-times profile-edit__close"></i></span>
+      <div class='card mb-3 mx-auto'>
+        <div class='card-body'>
+          <%= form_with model: @customer, url: customer_path, local: true do |f| %>
+            <div class="form-group my-5 mx-5">
+              <% if @customer.image.attached? %>
+                <%= image_tag @customer.image, size: "150x150" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "150x150" %>
+              <% end %><br />
+              <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
+            </div>
+            <div class="form-group my-5 mx-5">
+              <%= f.label :name, "ユーザー名" %><br />
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group my-5 mx-5">
+              <%= f.label :introduction, "自己紹介文" %><br />
+              <%= f.text_area :introduction, class: 'form-control' %>
+            </div>
+            <%= f.submit "変更保存", class:"btn btn-success btn-block w-75 mx-auto" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row flex-row-reverse py-5">
+        <div class="col-md-6"><%= link_to "退会する", customers_quit_path, class: "btn btn-danger btn-lg btn-block" %></div>
+        <div class="col-md-6"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-secondary btn-lg btn-block" %></div>
+    </div>
+  </div>
+</div>

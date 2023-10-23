@@ -1,2 +1,23 @@
-<h1>Public::VtuberCommunities#search</h1>
-<p>Find me in app/views/public/vtuber_communities/search.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+     <%= render 'public/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
+    </div>
+    <div class="col-9">
+      <div class="search_name">
+        キーワード検索：<%= @section_title %>
+      </div>
+      <div class="row">
+        <h2 class="col-lg-6">コミュニティ</h2>
+        <%= render 'public/vtuber_communities/search_button' %>
+      </div>
+      <div class='post_new'>
+        <%= render 'public/posts/post_new', post: @post %>
+      </div>
+      <div class='post_line'>
+        <%= render 'public/posts/post_line', posts: @posts %>
+      </div>
+    </div>
+  </div>
+</div>
+

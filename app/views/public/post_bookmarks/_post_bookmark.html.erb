@@ -1,0 +1,19 @@
+<% if post.post_bookmarked_by?(current_customer) %>
+  <%# 自分がいいねしている場合 %>
+  <object>
+    <%= link_to post_post_bookmarks_path(post), method: :delete, class: 'postline__footer-link', remote: true do %>
+      <div>
+        ♥<%= post.post_bookmarks.count %>いいね
+      </div>
+    <% end %>
+  </object>
+<% else %>
+  <%# 自分がいいねしていない場合 %>
+  <object>
+    <%= link_to post_post_bookmarks_path(post), method: :post, class: 'postline__footer-link', remote: true do %>
+      <div>
+        ♡<%= post.post_bookmarks.count %>いいね
+      </div>
+    <% end %>
+  </object>
+<% end %>

@@ -15,12 +15,13 @@
         </div>
 
         <div class="actions form-group my-5">
-          <%= f.submit "ログインする", class: "btn btn-success btn-lg col-xs-4" %>
+          <%= f.submit "ログインする", class: "btn btn-success btn-block mx-auto w-50" %>
         </div>
       <% end %>
       <div class="col-xs-18">
-        <h5 class="head-line title_h2 text-left">まだ会員登録をしていない方</h5>
-        <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+        <h5>まだ会員登録をしていない方</h5>
+        <p class="text-center my-3">まだ会員登録がお済みではない方はこちらより登録可能です。</p>
+        <%= link_to '新規会員登録画面へ', new_customer_registration_path, class: 'btn btn-success btn-block mx-auto w-50' %>
       </div>
     </div>
   </div>

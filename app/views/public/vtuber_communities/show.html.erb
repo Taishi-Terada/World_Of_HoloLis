@@ -1,2 +1,30 @@
-<h1>Public::VtuberCommunities#show</h1>
-<p>Find me in app/views/public/vtuber_communities/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
+    </div>
+    <div class="col-9">
+      <h2>コミュニティ</h2>
+      <div class="row">
+        <h2 class="col-lg-6">
+          <% if @vtuber_community.vtuber_information.image.attached? %>
+            <%= image_tag @vtuber_community.vtuber_information.image, size: "55x55" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "55x55" %>
+          <% end %>
+          <%= @vtuber_community.vtuber_information.vtuber_name %>
+          <i id='like_vtuber_community_buttons_<%= @vtuber_community.id %>'>
+            <%= render "public/like_vtuber_communities/like_vtuber_community", vtuber_community: @vtuber_community %>
+          </i>
+        </h2>
+        <%= render 'public/vtuber_communities/search_button' %>
+      </div>
+      <div class='post_new'>
+        <%= render 'public/posts/post_new', post: @post %>
+      </div>
+      <div class='post_line'>
+        <%= render 'public/posts/post_line', posts: @posts %>
+      </div>
+    </div>
+  </div>
+</div>

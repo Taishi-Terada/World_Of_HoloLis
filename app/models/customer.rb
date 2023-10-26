@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   has_many :post_bookmarks, dependent: :destroy
   has_many :like_vtuber_communities, dependent: :destroy
   has_many :like_vtuber_communitied_vtuber_communities, through: :like_vtuber_communities, source: :vtuber_community
-  
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -31,6 +31,17 @@ class Customer < ApplicationRecord
     followings.include?(customer)
   end
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "ゲストユーザー"
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
 
   has_one_attached :image
 

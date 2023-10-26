@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <%= flash[:notice]%>
     <div class="col-md-3">
       <%= render 'public/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
     </div>

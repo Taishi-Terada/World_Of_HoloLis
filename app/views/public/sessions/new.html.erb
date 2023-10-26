@@ -1,8 +1,9 @@
-<div class="container"> 
+<div class="container">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6 mx-auto py-5">
       <h5 class="head-line title_h2 text-left">ログイン</h5>
-
+      <%= flash[:notice]%>
+      
       <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
         <div class="field form-group my-5">
           <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
@@ -22,6 +23,10 @@
         <h5>まだ会員登録をしていない方</h5>
         <p class="text-center my-3">まだ会員登録がお済みではない方はこちらより登録可能です。</p>
         <%= link_to '新規会員登録画面へ', new_customer_registration_path, class: 'btn btn-success btn-block mx-auto w-50' %>
+      </div>
+      <div class="col-xs-18">
+        <h5>ゲストログインはこちらから</h5>
+        <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'btn btn-success btn-block mx-auto w-50', method: :post %>
       </div>
     </div>
   </div>

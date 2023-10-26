@@ -9,10 +9,10 @@
         <div class='card-body'>
           <%= form_with model: @new_news, url: admin_news_index_path do |f| %>
             <div class="form-group my-3">
-              <%= f.text_field :news_name, placeholder: "ニュースタイトルを記入", class:"form-control w-100 input-introduction" %>
+              <%= f.text_field :news_name, placeholder: "ニュースタイトルを記入", class:"form-control w-100 input-introduction", required: true %>
             </div>
             <div class="form-group my-3">
-              <%= f.text_area :news_introduction, placeholder: "ニュース内容を記入", class:"form-control w-100 input-introduction" %>
+              <%= f.text_area :news_introduction, placeholder: "ニュース内容を記入", class:"form-control w-100 input-introduction", required: true %>
             </div>
             <div>
               <label><i class="fa-solid fa-camera mx-3"></i> 画像を添付

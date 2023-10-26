@@ -9,8 +9,11 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.image.size<=2
       @post.customer_id = current_customer.id
-      @post.save!
-      redirect_back fallback_location: root_path, notice: "投稿が完了しました"
+      if @post.save
+        redirect_back fallback_location: root_path, notice: "投稿が完了しました"
+      else
+        redirect_back fallback_location: root_path, notice: @post.errors.full_messages.join(" ")
+      end
     else
       redirect_back fallback_location: root_path, notice: "画像数が2枚まで"
     end

@@ -14,13 +14,13 @@
   <div class='card-body'>
     <%= form_with model: post, url: posts_path do |f| %>
       <div class="form-group my-3">
-        <%= f.text_area :introduction, placeholder: "いまどうしている？", class:"form-control w-100 input-introduction" %>
+        <%= f.text_area :introduction, placeholder: "いまどうしている？", class:"form-control w-100 input-introduction", required: true %>
       </div>
       <div class="form-group my-3">
         <%= f.text_field :category, placeholder: "ハッシュタグ", class:"form-control w-100 input-introduction" %>
       </div>
       <div class="form-inline">
-        <%= f.collection_select :vtuber_community_id, VtuberInformation.all, :id, :vtuber_name, {include_blank: "選択して下さい"}, class:"form-control w-50 input-introduction" %>
+        <%= f.collection_select :vtuber_community_id, VtuberInformation.all, :id, :vtuber_name, {include_blank: "コミュニティを選択して下さい"}, required: true, class:"form-control w-50 input-introduction" %>
         <label><i class="fa-solid fa-camera mx-3"></i> 画像を添付(最大2枚)
           <%= f.file_field :image, accept: "image/*", multiple: true, class: 'news-new__image-field d-none' %>
         </label>

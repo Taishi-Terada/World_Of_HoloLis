@@ -1,5 +1,6 @@
 <div class="container"> 
   <div class="row">
+    <%= flash[:notice]%>
     <div class="col-4">
       <%= render 'public/customers/reft_line', customer: @customer, like_vtuber_communities: @like_vtuber_communities %>
     </div>

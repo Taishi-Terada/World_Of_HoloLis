@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <%= flash[:notice]%>
     <div class="col-12">
       <div class="card mb-3 w-75 mx-auto">
         <div class="card-header bg-transparent">
@@ -43,9 +44,6 @@
           </div>
         </div>
       </div>
-      <span id="comment_js">
-        <%= render 'public/post_comments/post_comment', post: @post %>
-      </span>
       <div class= 'comment__new-box' >
         <div class='card mb-3 w-75 mx-auto'>
           <div class='card-body'>
@@ -58,6 +56,9 @@
           </div>
         </div>
       </div>
+      <span id="comment_js">
+        <%= render 'public/post_comments/post_comment', post: @post %>
+      </span>
     </div>
   </div>
 </div>

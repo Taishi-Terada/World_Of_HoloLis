@@ -17,9 +17,13 @@
       <div class="container">
       <nav class="navbar-brand">
         <% if admin_signed_in? %>
-          <%= link_to "World of VTuber", admin_root_path %>
+          <%= link_to admin_root_path do %>
+            <%= image_tag "preview.png", height: "150px" %>
+          <% end %>
         <% else %>
-          <%= link_to "World of VTuber", root_path %>
+          <%= link_to root_path do %>
+            <%= image_tag "preview.png", height: "150px" %>
+          <% end %>
         <% end %>
     　</nav>
     　

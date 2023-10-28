@@ -3,9 +3,9 @@
     <object>
       <div>
         <% if customer.image.attached? %>
-          <%= image_tag customer.image, size: "55x55" %>
+          <%= image_tag customer.image, size: "80x80" %>
         <% else %>
-          <%= image_tag 'no_image', size: "55x55" %>
+          <%= image_tag 'no_image', size: "80x80" %>
         <% end %>
         <span class='mx-1'><%= customer.name %></span>
       </div>

@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
-    <%= flash[:notice]%>
     <div class="col-4">
       <div class="vtuber_communities_index">
         <table class="table table-bordered">
@@ -37,9 +37,9 @@
           <%= form_with model: @customer, url: customer_path, local: true do |f| %>
             <div class="form-group my-5 mx-5">
               <% if @customer.image.attached? %>
-                <%= image_tag @customer.image, size: "150x150" %>
+                <%= image_tag @customer.image, size: "200x200" %>
               <% else %>
-                <%= image_tag 'no_image', size: "150x150" %>
+                <%= image_tag 'no_image', size: "200x200" %>
               <% end %><br />
               <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
             </div>

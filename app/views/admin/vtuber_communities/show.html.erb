@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
     <div class="col-md-3">
       <%= render 'admin/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
     <div class="col-md-3">
       <%= render 'admin/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
@@ -27,14 +28,14 @@
         <% @news.each do |news| %>
           <div class="card mb-3 w-75 mx-auto">
             <div class="row no-gutters">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <% if news.image.attached? %>
-                  <%= image_tag news.image, size: "200x200" %>
+                  <%= image_tag news.image, size: "300x200" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "200x200" %>
+                  <%= image_tag 'no_image', size: "300x200" %>
                 <% end %>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div class="card-body">
                   <%= link_to admin_news_path(news.id), method: :delete, class: 'timeline__link-show', data: {confirm: "本当に削除しますか？"} do %>
                     <div class="text-right">

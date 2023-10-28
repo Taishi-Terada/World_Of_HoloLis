@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row my-3 ">
-    <%= flash[:notice]%>
     <h2 class="col-lg-4 offset-lg-1">VTuber情報一覧 </h2>
     <div class="col-lg-3 offset-lg-4">
       <%= form_with url: search_vtuber_informations_path, method: :get, local: true do |f| %>

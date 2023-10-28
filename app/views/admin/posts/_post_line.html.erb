@@ -25,7 +25,7 @@
       <div class="card-image">
         <% if post.image.attached? %>
           <% post.image.each do |image| %>
-            <%= image_tag image.variant(resize: '150x150') %>
+            <%= image_tag image.variant(resize: '200x200') %>
           <% end %>
         <% end %>
       </div>

@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
-    <%= flash[:notice]%>
     <div class="col-md-3">
       <%= render 'public/vtuber_communities/vtuber_community_each', vtuber_communities: @vtuber_communities %>
     </div>
@@ -10,14 +10,14 @@
         <% @news.each do |news| %>
           <div class="card mb-3 w-75 mx-auto">
             <div class="row no-gutters">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <% if news.image.attached? %>
-                  <%= image_tag news.image, size: "200x200" %>
+                  <%= image_tag news.image, size: "300x200" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "200x200" %>
+                  <%= image_tag 'no_image', size: "300x200" %>
                 <% end %>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div class="card-body">
                   <h5 class="card-title"><%= news.news_name %></h5>
                   <p class="card-text"><%= news.news_introduction %></p>

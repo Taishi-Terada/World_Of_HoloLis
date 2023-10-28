@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
-    <%= flash[:notice]%>
     <div class="col-4">
       <%= render 'public/customers/reft_line', customer: @customer, like_vtuber_communities: @like_vtuber_communities %>
     </div>
@@ -41,7 +41,7 @@
               <div class="card-image">
                 <% if post.image.attached? %>
                   <% post.image.each do |image| %>
-                    <%= image_tag image.variant(resize: '150x150') %>
+                    <%= image_tag image.variant(resize: '200x200') %>
                   <% end %>
                 <% end %>
               </div>

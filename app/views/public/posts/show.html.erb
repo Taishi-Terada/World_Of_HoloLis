@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice]%>
   <div class="row">
-    <%= flash[:notice]%>
     <div class="col-12">
       <div class="card mb-3 w-75 mx-auto">
         <div class="card-header bg-transparent">
@@ -24,7 +24,7 @@
           <div class="card-image">
             <% if @post.image.attached? %>
               <% @post.image.each do |image| %>
-                <%= image_tag image.variant(resize: '150x150') %>
+                <%= image_tag image.variant(resize: '300x300') %>
               <% end %>
             <% end %>
           </div>

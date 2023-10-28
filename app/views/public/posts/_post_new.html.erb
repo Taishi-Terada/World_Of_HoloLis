@@ -5,7 +5,7 @@
         <% if current_customer.image.attached? %>
           <%= image_tag current_customer.image, size: "55x55" %>
         <% else %>
-          <%= image_tag 'no_image', size: "55x55" %>
+          <%= image_tag 'no_image.jpg', size: "55x55" %>
         <% end %>
         <span class='mx-1'><%= current_customer.name %></span>
       </div>

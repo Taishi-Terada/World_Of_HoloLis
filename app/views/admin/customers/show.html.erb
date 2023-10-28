@@ -19,7 +19,7 @@
                   <% if post.customer.image.attached? %>
                     <%= image_tag post.customer.image, size: "55x55" %>
                   <% else %>
-                    <%= image_tag 'no_image', size: "55x55" %>
+                    <%= image_tag 'no_image.jpg', size: "55x55" %>
                   <% end %>
                   <span class='mx-1'><%= post.customer.name %></span>
                   <small class='mx-1'><%= post.created_at.strftime('%Y/%m/%d') %></small>

@@ -16,7 +16,7 @@
                 <% if vtuber_community.vtuber_information.image.attached? %>
                   <%= image_tag vtuber_community.vtuber_information.image, size: "55x55" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "55x55" %>
+                  <%= image_tag 'no_image.jpg', size: "55x55" %>
                 <% end %>
                 <%= vtuber_community.vtuber_information.vtuber_name %>
               </td>
@@ -39,7 +39,7 @@
               <% if @customer.image.attached? %>
                 <%= image_tag @customer.image, size: "200x200" %>
               <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
+                <%= image_tag 'no_image.jpg', size: "200x200" %>
               <% end %><br />
               <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
             </div>

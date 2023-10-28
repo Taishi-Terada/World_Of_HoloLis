@@ -25,7 +25,7 @@
               <% if vtuber_information.image.attached? %>
                 <%= image_tag vtuber_information.image, size: "235x235" %>
               <% else %>
-                <%= image_tag 'no_image', size: "235x235" %>
+                <%= image_tag 'no_image.jpg', size: "235x235" %>
               <% end %>
               <div class="card-body">
                 <h3 class="card-title"><%= vtuber_information.vtuber_name %></h3>

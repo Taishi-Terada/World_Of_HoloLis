@@ -11,7 +11,7 @@
           <% if @vtuber_community.vtuber_information.image.attached? %>
             <%= image_tag @vtuber_community.vtuber_information.image, size: "55x55" %>
           <% else %>
-            <%= image_tag 'no_image', size: "55x55" %>
+            <%= image_tag 'no_image.jpg', size: "55x55" %>
           <% end %>
           <%= @vtuber_community.vtuber_information.vtuber_name %>
         </h2>

@@ -26,9 +26,9 @@ SNSには検索を絞り込む機能があるので、それを利用すれば�
 - 同じファンの人達と楽しく会話する時
 ​
 ## 設計書
-- ER図 ![World of VTuber_er_answersheet](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/3c02309a-7e98-4a62-a3cf-6871829e80a0)
+- ER図 ![World of VTuber_er_answersheet (1)](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/e5d44a24-d6e5-437f-aa94-a3687172eaf1)
 - アプリケーション詳細設計書 https://docs.google.com/spreadsheets/d/1uYG1gC9L2GPwQmU1WtaXmplUwocBwrXucviWUg0ry5g/edit?usp=sharing
-- UI Flows 会員側 ![World of VTuber‐会員側‐画面遷移図](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/af1e097c-0045-4101-8e39-4764162f9c55)
+- UI Flows 会員側 ![World of VTuber‐会員側‐画面遷移図](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/87855069-184b-400a-aeb0-59f95afe3688)
 - UI Flows 管理者側 ![World of VTuber‐管理者側‐画面遷移図](https://github.com/Taishi-Terada/World_Of_VTuber/assets/135344370/ae97c51c-fa75-457c-9c61-6fe2ba3fc01e)
 - ワイヤーフレーム会員側  https://drive.google.com/file/d/1VGnoCjO13mmfHBIOQJBx4mijfE93ErIO/view?usp=sharing
 - ワイヤーフレーム管理者側 https://drive.google.com/file/d/1YLxtZ_lJI2Ouj0AkNJNQmXtJRupXHIsk/view?usp=sharing
@@ -44,6 +44,3 @@ SNSには検索を絞り込む機能があるので、それを利用すれば�
 ​
 ## 使用素材
 - ロゴ素材 https://www.designevo.com/logo-maker/
-- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-折りたたむ

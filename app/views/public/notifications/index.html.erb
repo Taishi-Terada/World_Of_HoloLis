@@ -1,0 +1,16 @@
+<div class="container all">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="ml-4 mb-5">お知らせ</h1>
+      <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
+      <% if notifications.exists? %>
+        <%= render notifications %>
+        <div class="d-flex justify-content-center">
+          <p><%= paginate @notifications %></p>
+        </div>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

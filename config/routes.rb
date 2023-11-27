@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       end
       resource :like_vtuber_communities,only: [:create, :destroy]
     end
+    resources :notifications, only: :index
   end
 
   namespace :admin do

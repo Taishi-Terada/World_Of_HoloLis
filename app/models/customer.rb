@@ -62,6 +62,6 @@ class Customer < ApplicationRecord
   has_one_attached :image
 
   validates :introduction, length: { maximum: 500 }
-
+  validates :name, presence: true
 
 end

@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
         redirect_back fallback_location: root_path, notice: @post.errors.full_messages.join(" ")
       end
     else
-      redirect_back fallback_location: root_path, notice: "画像数が2枚まで"
+      redirect_back fallback_location: root_path, alert: "投稿できる画像数は2枚まで"
     end
   end
   
